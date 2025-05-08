@@ -199,8 +199,9 @@ class Model():
         -------
         array
             Dispersion affected field in frequency domain.
+            combined with linear attenuation
         """
-        return numbaexp(-1j*self.waveguide.k*dz)*field
+        return numbaexp(-1j*self.waveguide.k*dz-self.waveguide.atten_np_per_m*dz/2)*field
 
 
 """

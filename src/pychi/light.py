@@ -131,7 +131,7 @@ class Light():
         noisy_field *= np.exp(1j*field_angle)
         self.field_t_in = noisy_field
         
-    def plot_propagation(self, savename=None):
+    def  plot_propagation(self, savename=None):
         """
         Plot propagation results.
         """

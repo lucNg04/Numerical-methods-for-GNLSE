@@ -40,11 +40,12 @@ class Waveguide():
     t_pts : float, optional
         Number of points in the time and frequency axes, will be rounded
         to nearest higher power of 2. The default is 2**14.
+    attenuation : float, optional
     """
     def __init__(self, frequency, n_eff, chi_2, chi_3,
                  effective_area, length, raman_fraction=0.18,
                  raman_tau_1=0.0122e-12, raman_tau_2=0.032e-12,
-                 t_pts=2**14):
+                 t_pts=2**14,atten=53):
         self.z = 0
         self.t_pts = int(2**np.ceil(np.log2(t_pts)))
         self.length = length
@@ -64,6 +65,10 @@ class Waveguide():
         self.raman_tau_1 = raman_tau_1
         self.raman_tau_2 = raman_tau_2
         self.raman_effect = self._compute_raman_effect()
+        #linear attenuation with unit of dB/m
+        self.atten_db_per_m=atten
+        #linear attenuation with unit of np/m
+        self.atten_np_per_m=self.atten_db_per_m*np.log(10)/10.0
     
     @property
     def n_eff(self):

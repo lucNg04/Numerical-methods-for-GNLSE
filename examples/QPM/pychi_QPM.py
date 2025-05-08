@@ -20,7 +20,7 @@ import sys
 sys.path.append(os.getcwd() + '../../../')
 
 from src import  *
-
+from src.pychi import light,materials,models,solvers
 
 """
 User parameters
